@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill Manifest",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "entry": { "type": "string" },
+    "permissions": { "type": "array", "items": { "type": "string" } },
+    "network": {
+      "oneOf": [
+        { "type": "string", "enum": ["none", "any"] },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "secrets": {
+      "oneOf": [
+        { "type": "string", "enum": ["none"] },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    }
+  },
+  "required": ["name", "version", "entry", "permissions"]
+}

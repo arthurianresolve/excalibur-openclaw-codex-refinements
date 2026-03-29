@@ -1,0 +1,15 @@
+{
+  "policies": [
+    {
+      "id": "default-safe",
+      "description": "Default safe policy",
+      "scopes": ["fs.read", "net.http"],
+      "decision": "allow"
+    },
+    {
+      "id": "exec-requires-approval",
+      "scopes": ["process.exec", "fs.write", "secrets.read"],
+      "decision": "prompt"
+    }
+  ]
+}

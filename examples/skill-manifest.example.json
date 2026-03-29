@@ -1,0 +1,8 @@
+{
+  "name": "github",
+  "version": "1.0.0",
+  "entry": "SKILL.md",
+  "permissions": ["net.http", "fs.read"],
+  "network": ["api.github.com"],
+  "secrets": ["GITHUB_TOKEN"]
+}
