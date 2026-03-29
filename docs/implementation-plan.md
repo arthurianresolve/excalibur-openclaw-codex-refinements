@@ -5,6 +5,7 @@
 - Log decisions without blocking
 - Add audit event stream
 - Ship a reference CLI + schema validator (ocp)
+- Add policy glob/condition matching + tests
 
 ## Phase 2 — Skill manifests
 - Introduce manifest schema + lint command

@@ -12,7 +12,16 @@
           "description": { "type": "string" },
           "scopes": { "type": "array", "items": { "type": "string" } },
           "decision": { "type": "string", "enum": ["allow", "prompt", "deny"] },
-          "conditions": { "type": "object" }
+          "conditions": {
+            "type": "object",
+            "properties": {
+              "agentId": { "type": "string" },
+              "toolName": { "type": "string" },
+              "pathPrefix": { "type": "string" },
+              "domainAllowlist": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": false
+          }
         },
         "required": ["id", "scopes", "decision"]
       }

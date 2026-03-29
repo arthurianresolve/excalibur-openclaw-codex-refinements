@@ -10,6 +10,14 @@
       "id": "exec-requires-approval",
       "scopes": ["process.exec", "fs.write", "secrets.read"],
       "decision": "prompt"
+    },
+    {
+      "id": "guardian-cleanup",
+      "scopes": ["sandbox.cleanup"],
+      "decision": "allow",
+      "conditions": {
+        "agentId": "main"
+      }
     }
   ]
 }

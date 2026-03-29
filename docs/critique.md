@@ -14,6 +14,7 @@
 - **Safety backoff**: sandbox guardian uses TTLs + exponential cooldowns to avoid restart loops.
 - **Telemetry**: add audit events for policy decisions and sandbox lifecycle actions.
 - **Operational artifacts**: added a minimal CLI (ocp) with schema validation + guardian command to make the plan executable.
+- **Coding standards**: added secure/clean coding checklists and token‑efficient guidance.
 
 ## Improved sequencing
 1. **Exec policy layer (observe‑only)**

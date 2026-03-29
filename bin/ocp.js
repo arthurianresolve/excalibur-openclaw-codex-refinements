@@ -7,6 +7,11 @@ import { evaluatePolicy, loadPolicy } from '../src/execpolicy.js';
 import { validateManifest } from '../src/manifest.js';
 import { runGuardian } from '../src/guardian.js';
 
+function formatErrors(errors) {
+  if (!errors) return 'unknown error';
+  return errors.map((e) => `${e.instancePath || '/'} ${e.message}`).join('\n');
+}
+
 const argv = minimist(process.argv.slice(2), {
   boolean: ['dry-run'],
   alias: { h: 'help' },
@@ -27,8 +32,14 @@ try {
   if (command === 'policy-check') {
     const [policyPath, scope] = rest;
     if (!policyPath || !scope) throw new Error('policy-check requires <policy.json> <scope>');
+    const context = {
+      agentId: argv.agent,
+      toolName: argv.tool,
+      path: argv.path,
+      domain: argv.domain,
+    };
     const policy = loadPolicy(policyPath);
-    const result = evaluatePolicy(policy, scope);
+    const result = evaluatePolicy(policy, scope, context);
     console.log(JSON.stringify(result, null, 2));
     process.exit(result.decision === 'deny' ? 2 : 0);
   }
@@ -39,7 +50,7 @@ try {
     const manifest = JSON.parse(fs.readFileSync(path.resolve(manifestPath), 'utf8'));
     const result = validateManifest(manifest);
     if (!result.ok) {
-      console.error('Manifest invalid:', result.errors);
+      console.error('Manifest invalid:\n' + formatErrors(result.errors));
       process.exit(1);
     }
     console.log('Manifest OK');
@@ -47,7 +58,7 @@ try {
   }
 
   if (command === 'guardian-run') {
-    const result = await runGuardian({ dryRun: argv['dry-run'] });
+    const result = await runGuardian({ dryRun: argv['dry-run'], policyPath: argv.policy });
     console.log(JSON.stringify(result, null, 2));
     process.exit(0);
   }

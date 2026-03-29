@@ -9,12 +9,17 @@
   },
   "scripts": {
     "lint:manifest": "node bin/ocp.js manifest-lint examples/skill-manifest.example.json",
-    "policy:check": "node bin/ocp.js policy-check examples/execpolicy.example.json fs.read",
-    "guardian:dry": "node bin/ocp.js guardian-run --dry-run"
+    "policy:check": "node bin/ocp.js policy-check config/execpolicy.example.json fs.read",
+    "guardian:dry": "node bin/ocp.js guardian-run --dry-run",
+    "test": "vitest run"
   },
   "dependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^2.1.1",
+    "minimatch": "^10.2.4",
     "minimist": "^1.2.8"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.2"
   }
 }
