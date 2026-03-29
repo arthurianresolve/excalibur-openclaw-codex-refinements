@@ -1,0 +1,20 @@
+{
+  "name": "excalibur-openclaw-codex-refinements",
+  "version": "2026.03.29-alpha",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "ocp": "bin/ocp.js"
+  },
+  "scripts": {
+    "lint:manifest": "node bin/ocp.js manifest-lint examples/skill-manifest.example.json",
+    "policy:check": "node bin/ocp.js policy-check examples/execpolicy.example.json fs.read",
+    "guardian:dry": "node bin/ocp.js guardian-run --dry-run"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^2.1.1",
+    "minimist": "^1.2.8"
+  }
+}

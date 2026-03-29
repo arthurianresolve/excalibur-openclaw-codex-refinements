@@ -4,6 +4,7 @@
 - Add policy evaluation hook before tool execution
 - Log decisions without blocking
 - Add audit event stream
+- Ship a reference CLI + schema validator (ocp)
 
 ## Phase 2 — Skill manifests
 - Introduce manifest schema + lint command

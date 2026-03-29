@@ -8,9 +8,11 @@ This repo captures a refined, implementation‑ready plan to integrate Codex‑i
 - `docs/skills-manifest.md` — manifest spec + enforcement
 - `docs/sandbox-guardian.md` — sandbox lifecycle + auto‑healing
 - `docs/implementation-plan.md` — phased plan with milestones
+- `docs/operations.md` — operational usage for the CLI
 - `schemas/` — JSON schemas for exec policy + skill manifests
 - `examples/` — example config snippets
 - `scripts/` — placeholder guardian scripts
+- `src/` + `bin/` — operational CLI + reference implementation
 
 ## Quick start (design review)
 1. Read `docs/critique.md`
